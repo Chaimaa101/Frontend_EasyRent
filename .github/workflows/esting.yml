@@ -1,4 +1,4 @@
-name: Laravel Lint & PHP CI
+name: React Lint & JS CI
 
 on:
   push:
@@ -7,29 +7,22 @@ on:
     branches: [main]
 
 jobs:
-  laravel-lint:
-    name: Lint Laravel / PHP
+  react-lint:
+    name: Lint React / JS / CSS
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          php-version: '8.2'
+          node-version: '20'
 
-      - name: Setup Composer
-        uses: php-actions/composer@v6
-        with:
-          php-version: '8.2'
-
-      - name: Install Composer dependencies
-        run: composer install --no-progress --prefer-dist
-
-      - name: Run PHPStan (optional) / Linter
-        run: vendor/bin/phpstan analyse
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./frontend_easyrent   # chemin vers ton frontend React
 
       - name: Run Super-Linter
         uses: github/super-linter@v4
@@ -37,4 +30,4 @@ jobs:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: true
-          FILTER_REGEX_INCLUDE: '\.php$'
+          FILTER_REGEX_INCLUDE: '\.(js|jsx|ts|tsx|css|html)$'
