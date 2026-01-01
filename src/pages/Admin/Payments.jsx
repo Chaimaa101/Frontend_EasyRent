@@ -1,10 +1,10 @@
 
 import { BiTrash } from "react-icons/bi";
 import { motion } from "framer-motion";
-import PageHeader from "../../components/PageHeader";
-import { Pagination } from "swiper/modules";
+import PageHeader from "./common/PageHeader";
 import { useContext, useEffect } from "react";
 import { AdminContext } from "../../Context/AdminProvider";
+import Pagination from "../../components/common/Pagination";
 
 function Paymentns() {
 
@@ -32,7 +32,7 @@ const handleDelete = async (id) => {
   return (
     <>
       <div className="flex-1 relative overflow-auto z-10">
-                   <PageHeader title = "Gestion des Paymentns" subtitle="gesfvnsfjvjksfjk svjsjnvsjkrvsw" num={total} />
+                   <PageHeader title = "Gestion des Paymentns" subtitle="Consulter les payments effectués" num={total} />
        
      <main className="container max-w-7xl mx-auto px-4 mt-8">
           <div className="bg-white p-6 rounded-lg shadow-md">

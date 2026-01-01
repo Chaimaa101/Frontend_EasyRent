@@ -1,10 +1,14 @@
 import React from "react";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const QuickLinks = [
-  { title: "Home", link: "/" },
-  { title: "About Us", link: "/about" },
-
+  { title: "Accueil", link: "/" },
+  { title: "Vehicules", link: "/listVehicule" },
+];
+const vehicules = [
+  { title: "Contact Nous", link: "/contact" },
+  { title: "Comment ça marche ? ", link: "/howitworks" },
 ];
 
 const Footer = () => {
@@ -29,25 +33,25 @@ const Footer = () => {
           </div>
 
           <div>
-            <h2 className="font-bold mb-3">Quick Links</h2>
+            <h2 className="font-bold mb-3">Liens Rapides</h2>
             <ul className="space-y-2">
               {QuickLinks.map((link, idx) => (
-                <li key={idx} className="flex items-center gap-1 hover:text-gray-200 cursor-pointer">
+                <Link to={link.link} key={idx} className="flex items-center gap-1 hover:text-gray-200 cursor-pointer">
                   <span>&#10148;</span>
                   <span>{link.title}</span>
-                </li>
+                </Link>
               ))}
             </ul>
           </div>
 
           <div>
-            <h2 className="font-bold mb-3">Liens Rapides</h2>
+            <h2 className="font-bold mb-3">Aide et soutien</h2>
             <ul className="space-y-2">
-              {QuickLinks.map((link, idx) => (
-                <li key={idx} className="flex items-center gap-1 hover:text-gray-200 cursor-pointer">
+              {vehicules.map((link, idx) => (
+                <Link to={link.link} key={idx} className="flex items-center gap-1 hover:text-gray-200 cursor-pointer">
                   <span>&#10148;</span>
                   <span>{link.title}</span>
-                </li>
+                </Link>
               ))}
             </ul>
           </div>
@@ -55,8 +59,8 @@ const Footer = () => {
           <div>
             <h2 className="font-bold mb-3">Informations de Contact</h2>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2"><FaPhone /> +1 (555) 123-4567</li>
-              <li className="flex items-center gap-2"><FaEnvelope /> info@carrental.com</li>
+              <li className="flex items-center gap-2"><FaPhone /> +212 56532677</li>
+              <li className="flex items-center gap-2"><FaEnvelope /> easyrent.service@example.com</li>
               <li className="flex items-center gap-2"><FaMapMarkerAlt /> 123 Main St, City, State 12345</li>
             </ul>
           </div>
